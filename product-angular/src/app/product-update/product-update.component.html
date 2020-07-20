@@ -1,0 +1,30 @@
+<div class="text-left mb-4">
+    <h3 class="display-4 text-warning">Ürün Güncelle</h3>
+</div>
+<form #productAddForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <input type="text" placeholder="Ürün adı giriniz" #name="ngModel" [(ngModel)]="product.name"
+            class="form-control" name="name" id="name" required>
+        <div *ngIf="name.invalid&&name.dirty" class="alert alert-danger mt-2"><small>Ürün ismi gereklidir.</small></div>
+    </div>
+    <div class="form-group">
+        <input type="text" placeholder="Ürün açıklaması giriniz" #description="ngModel"
+            [(ngModel)]="product.description" class="form-control" name="description" id="description" required>
+        <div *ngIf="description.invalid&&description.dirty" class="alert alert-danger mt-2"><small>Ürün açıklaması
+                gereklidir.</small></div>
+    </div>
+    <div class="form-group">
+        <input type="text" placeholder="Ürün fiyatı giriniz (00.00 formatında giriniz) " #price="ngModel" [(ngModel)]="product.price"
+            class="form-control" name="price" id="price" required>
+        <div *ngIf="price.invalid&&price.dirty" class="alert alert-danger mt-2"><small>Ürün fiyatı gereklidir.</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" placeholder="Ürün resim linki giriniz " #imageUrl="ngModel" [(ngModel)]="product.imageUrl"
+            class="form-control" name="imageUrl" id="imageUrl" required>
+        <div *ngIf="imageUrl.invalid&&imageUrl.dirty" class="alert alert-danger mt-2"><small>Ürün resim linki
+                gereklidir.</small>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-warning" [disabled]="productAddForm.invalid">Ürün Güncelle</button>
+</form>

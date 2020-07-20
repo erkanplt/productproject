@@ -1,0 +1,18 @@
+<div class="alert alert-danger" role="alert" *ngIf="!(products | async)?.length">
+  <p>Kayıtlı ürün yoktur. Uyarıyı görmemek için ürün ekleyiniz.</p>
+</div>
+<div class="row text-center">
+  <div *ngFor="let product of products | async" class="card m-3 mr-4" style="width: 18rem;">
+    <img class="card-img-top" [src]="product.imageUrl" alt="{{product.name}} image">
+    <div class="card-body">
+      <!-- <div class="text-right"><small><i>{{product.updatedAt | date:'longDate'}}</i></small></div> -->
+      <h5 class="card-title">{{product.name | uppercase }}</h5>
+      <p class="card-text">
+        {{product.description}}<br>
+      </p>
+      <div><mark><small>{{product.price | currency : "TRY":"₺ ":"1.2-2"}}</small></mark></div><br>
+      <button (click)="deleteProduct(product.id)" class="btn btn-danger mr-3">Ürünü Sil</button>
+      <button (click)="updateProduct(product.id)" class="btn btn-warning">Ürünü Güncelle</button>
+    </div>
+  </div>
+</div>
